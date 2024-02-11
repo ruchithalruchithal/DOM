@@ -1,0 +1,83 @@
+<form id="registration">
+    <div>
+      <label for="userFullName">Full Name</label>
+    </div>
+    <input required id="userFullName"  name="userFullName" />
+    
+    <div>
+      <label for="userEmail">Email</label>
+    </div>
+    <input required type="email" id="userEmail" name="userEmail" />
+
+ <div>
+      <label for="userPhone">Phone</label>
+    </div>
+    <input required type="number" id="userPhone" name="userPhone" />
+    
+     <div>
+      <label for="userPassword">Password</label>
+    </div>
+    <input required type="password" id="userPassword" name="userPassword" />
+    
+    <input type="button" id="showPassword" value="show password" />
+    
+    <div>
+      <label for="userCnfPassword">Confirm Password</label>
+    </div>
+    <input required type="password" id="userCnfPassword" name="userCnfPassword" />
+    
+    <div class="error"></div>
+    </br>
+    </br>
+
+
+    <input type="submit" id="submitBtn" value="Submit Registration Form" />
+  </form>
+
+<script>
+  const registrationForm=document.querySelector("#registration");
+
+
+registrationForm.addEventListener("submit", function(event){
+  event.preventDefault();
+  
+    
+  const pwd=document.querySelector("#userPassword").value;
+  const cnfPwd=document.querySelector("#userCnfPassword").value;
+   
+  if(pwd !==cnfPwd){
+    alert("Password Mismatch")
+    return;
+  }
+})
+
+
+//IF user enter less than 6 char in password field, boxshadow red, if length > 6 box shadow green
+document.querySelector("#userPassword").addEventListener("change", function(event){
+  if(event.target.value.length < 6){
+    event.target.style.boxShadow="5px 5px 5px red";
+  }
+  else {
+    event.target.style.boxShadow="5px 5px 5px green";
+    
+  }
+})
+
+////The focus event is called on focusing,
+  document.querySelector("#userPassword").addEventListener("focus", function(e){
+    e.target.style.boxShadow="5px 5px 5px red";
+  });
+
+
+ // and blur – when the element loses the focus.
+  document.querySelector("#userPassword").addEventListener("blur", function(e){
+   if(e.target.value.length > 6){
+   e.target.style.boxShadow="5px 5px 5px green";
+   }
+  });
+
+  
+  
+  
+</script>
+  

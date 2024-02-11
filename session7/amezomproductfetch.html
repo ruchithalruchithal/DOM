@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <title>Bootstrap Card</title>
+  </head>
+  <body>
+    <div class="container-fluid"></div>
+
+    <script>
+      /*
+
+
+const ticketStatus="CNF"; //WL // RAC
+
+
+//promise declaration
+const reservationPromise=new Promise(function(res, rej){
+  //logic
+  if(ticketStatus == "CNF"){
+    
+    res("Ticket is confirmed");
+  }
+  else if (ticketStatus == "RAC"){
+    res("Ticket is RAC");
+  }
+  else {
+    rej("Ticket not confirmed");
+  }
+});
+
+
+
+
+//handle promise
+ reservationPromise.then(function(confirmedStatus){
+   console.log(confirmedStatus)
+ }).catch(function(rejectStatus){
+   console.log(rejectStatus)
+ })
+ 
+ 
+ */
+
+      const getProductsPromise = fetch("https://dummyjson.com/products");
+
+      getProductsPromise.then(function (rawData) {
+        rawData.json().then(function (finalData) {
+          console.log(finalData.products);
+          listAllProductsIntoDOM(finalData.products);
+        });
+      });
+
+      //Take data as input and create 30 items
+      function listAllProductsIntoDOM(productsData) {
+        const container = document.querySelector(".container-fluid");
+
+        productsData.forEach(function (product) {
+          container.innerHTML += createCard(
+            product.images[0],
+            product.title,
+            product.description,
+            product.price
+          );
+        });
+      }
+
+      //create one card with all details
+      function createCard(imgSrc, title, description, price) {
+        return `<div class="d-flex border mb-2"><div class="img-content"><img class="card-img-top"  src=${imgSrc} /></div><div class="card-body"><h5 class="card-title">${title}</h5><p class="card-text">${description}</p><p class="card-text"><small class="text-muted">${price}</small></p></div></div>`;
+      }
+    </script>
+  </body>
+</html>

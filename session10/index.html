@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Landing Page</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div id="search-results" class="row">
+        <!-- DATA FROM API-->
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        fetchCities();
+      });
+      const cityWrapper = document.querySelector("#search-results");
+
+      async function fetchCities() {
+        const rawApiData = await fetch("http://13.235.57.70:8082/cities");
+        const citiesResponse = await rawApiData.json();
+        addCityToDOM(citiesResponse);
+      }
+
+      function addCityToDOM(apiData) {
+        cityWrapper.innerHTML = "";
+        apiData.forEach((city) => {
+          const cityCardEle = generateCityCard(
+            city.id,
+            city.city,
+            city.description,
+            city.image
+          );
+          cityWrapper.innerHTML += cityCardEle;
+        });
+      }
+
+      function generateCityCard(id, city, description, img) {
+        return `<div class="col-md-3 col-6 mt-3"> 
+    <a href="/adventure.html?city=${id.toLowerCase()}" >
+<div class="card" id=${id} >
+        <img
+          src=${img}
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body d-md-flex text-center justify-content-between">
+          <p class="card-text">${city}</p>
+          <p class="card-text">${description}</p>
+        </div>
+        </div>
+        </a>
+      </div>`;
+      }
+    </script>
+  </body>
+</html>

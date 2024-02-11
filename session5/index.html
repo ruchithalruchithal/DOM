@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <title>Bootstrap Card</title>
+  </head>
+  <body>
+    <ul class="ul-list">
+      <li>Item - A</li>
+      <li>Item - B</li>
+      <li>Item - C</li>
+      <li>Item - D</li>
+      <li>Item - E</li>
+    </ul>
+    <ul class="list" id="list2">
+      <li>Item - 1</li>
+      <li>Item - 2</li>
+      <li>Item - 3</li>
+      <li>Item - 4</li>
+      <li>Item - 5</li>
+    </ul>
+
+    <ul class="list">
+      <li>Item - a</li>
+      <li>Item - b</li>
+      <li>Item - c</li>
+      <li>Item - d</li>
+      <li>Item - e</li>
+    </ul>
+
+    <ol class="list" id="list3">
+      <li>Item - I</li>
+      <li>Item - II</li>
+      <li>Item - III</li>
+      <li>Item - IV</li>
+      <li id="ol-list-5">
+        <p style="display: none">Hello</p>
+        <p>Item - V</p>
+      </li>
+    </ol>
+
+    <script>
+      //store the reference of container
+      //create new element
+      //add content
+      //append to container, create in step 1
+
+      //add Item - 0 to the list2
+
+      const list2 = document.querySelector("#list2");
+
+      console.log(list2.innerHTML);
+
+      //when we want to add at the beginning
+      list2.innerHTML = `<li>Item - 0</li> ${list2.innerHTML}`;
+
+      //always use 4-step strategy whenever want to add at the last
+      //add Item -6 to the list2
+      const sixthItem = document.createElement("li");
+      sixthItem.textContent = "Item - 6";
+
+      list2.append(sixthItem);
+
+      //list2.innerHTML=` ${list2.innerHTML} <li>Item - 6</li>`;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>JS Bin</title>
+  </head>
+  <body>
+    <h1>User Data</h1>
+    <input
+      id="name"
+      type="text"
+      class="text-input"
+      placeholder="Enter Full Name"
+      name="fullName"
+    />
+    <input id="email" type="email" placeholder="Email" name="email" />
+    <button id="showBtn">Show Details</button>
+
+    <script>
+      /*
+
+{
+  name :"Brad Pitt",
+    email: "abc@xyz"
+}
+
+
+*/
+      const userData = {};
+
+      const nameInput = document.querySelector("#name");
+      const emailInput = document.querySelector("#email");
+      const showBtn = document.querySelector("#showBtn");
+
+      //Will trigger when user will focus out of the target element
+
+      nameInput.addEventListener("change", function (event) {
+        // console.log(event.target.id)
+        //console.log(event.target.className)
+        console.log("VALUE FROM CHANGE EVENT:-" + event.target.value);
+      });
+
+      //Will trigger whenever user enter input in the target element
+
+      nameInput.addEventListener("input", function (event) {
+        userData[event.target.id] = event.target.value;
+        console.log(userData);
+      });
+
+      emailInput.addEventListener("input", function (event) {
+        userData[event.target.id] = event.target.value;
+        console.log(userData);
+      });
+
+      showBtn.addEventListener("click", function () {
+        console.log(userData);
+      });
+    </script>
+  </body>
+</html>

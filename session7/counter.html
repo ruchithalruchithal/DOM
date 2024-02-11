@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+</head>
+<body>
+   <h1> Counter App</h1>
+  <span id="count">0</span>
+  </br>
+  </br>
+  </br>
+  </br>
+ <!--
+  <button id="increment" onclick="changeCount(1)">+</button>
+  <button id="increment" onclick="changeCount(-1)">-</button>
+-->  
+
+<button id="increment">+</button>
+  <button id="decrement">-</button>
+
+<script>
+  let count=0;
+
+//store the ref of the element
+const incrementBtn=document.querySelector("#increment");
+const decrementBtn=document.querySelector("#decrement");
+
+//ELEMENT_REF.addEventListener(EVENT, CALLBACK);
+
+
+
+incrementBtn.addEventListener("click", function(){
+  changeCount(1);
+})
+
+
+decrementBtn.addEventListener("click", function(){
+  if(count>0)
+  changeCount(-1);
+})
+
+
+function changeCount(num){
+  
+  count=count + num;
+  document.querySelector("#count").textContent=count;
+}
+
+
+
+
+
+
+
+
+//document.querySelector("#count").textContent--> Number("0") + 1--> 0 + 1--> 1 --> 1 + (-1)
+  
+</script>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>JS Bin</title>
+    <style>
+      .color-blocks {
+        display: flex;
+        background: cyan;
+        padding: 5px;
+      }
+      .block {
+        padding: 20px;
+        border: 1px solid grey;
+        margin: 0 10px;
+      }
+
+      .block:hover {
+        box-shadow: 5px 5px 5px grey;
+      }
+
+      #selected {
+        margin: 10px;
+        border: 1px solid grey;
+        min-height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="color-blocks" class="color-blocks">
+      <div id="Red" class="block">Red</div>
+      <div id="Green" class="block">Green</div>
+      <div id="Blue" class="block">Blue</div>
+      <div id="Yellow" class="block">Yellow</div>
+      <div id="Grey" class="block">Grey</div>
+    </div>
+
+    <div id="selected">Selected Color: None</div>
+
+    <script>
+      const colorBlockParent = document.querySelector(".color-blocks");
+
+      const selected = document.querySelector("#selected");
+      colorBlockParent.addEventListener("click", function (event) {
+        selected.textContent = `Selected Color: ${event.target.id}`;
+
+        selected.style.background = event.target.id;
+      });
+    </script>
+  </body>
+</html>

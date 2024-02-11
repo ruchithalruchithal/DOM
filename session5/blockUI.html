@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+    <style>
+      body {
+        height: 400vh;
+        background-color: lightgreen;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Try to Scroll</h1>
+    <script>
+      /*
+        //synchronous code
+      function wait(ms) {
+        let start = new Date().getTime();
+        let end = start;
+        while (end < start + ms) {
+          end = new Date().getTime();
+        }
+      }
+      wait(10000);
+      alert("Now you can scroll");
+
+
+      */
+
+      //asynchronous code
+      function showAlertAfterDelay(ms) {
+        setTimeout(() => {
+          alert("Hello after 10 seconds!");
+        }, 10000);
+      }
+      showAlertAfterDelay(10000);
+    </script>
+  </body>
+</html>

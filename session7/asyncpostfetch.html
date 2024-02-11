@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>product Fetch</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container-fluid">
+      <ul class="post-list"></ul>
+    </div>
+
+    <script>
+      //HOW TO CONVERT ANY FUNCTION TO ASYNC
+      //STEP-1: ADD `async` keyword;
+      //STEP-2: IF IT IS A RESOLVE FUCTION JUST RETURN THE DATA
+      //STEP-3: IF IT IS A REJECT FUCTION JUST THROW THE DATA AS ERROR
+
+      async function getPostFromApi() {
+        try {
+          const rawData = await fetch("http://3.110.132.98:8082/cities");
+          const finalApiData = await rawData.json();
+          projectUIData(finalApiData);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      getPostFromApi();
+
+      function projectUIData(apiData) {
+        const container = document.querySelector(".post-list");
+
+        apiData.forEach(function (post) {
+          debugger;
+          const liEle = document.createElement("li");
+          liEle.textContent = post.title;
+          container.append(liEle);
+        });
+      }
+
+      //perform fetch with URL --> run first then --> run second then with json-->inside second then, call ui projection func
+    </script>
+  </body>
+</html>
